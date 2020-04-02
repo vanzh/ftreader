@@ -1,10 +1,9 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ftreader/http/BiResponse.dart';
-import 'package:ftreader/model/BookCity.dart';
-import 'dart:convert';
-
-import 'package:ftreader/model/book_entity.dart';
+import 'package:ftreader/model/CityCategory.dart';
 
 var api = new ApiFactory();
 
@@ -22,21 +21,24 @@ class ApiFactory {
 
   Dio _dio;
 
-  bookCity() async {
-    _request("https://appbdsc.cdn.bcebos.com/v6/base/man.html",
-        (var list) {
-      print("hello list:");
-    });
+  Future<List<CityCategory>> bookCityList() async {
+    var list =
+        await _request("https://appbdsc.cdn.bcebos.com/v6/base/man.html");
+    return list
+        ?.map((e) =>
+            e == null ? null : CityCategory.fromJson(e as Map<String, dynamic>))
+        ?.toList();
   }
 
-  _request(String url, Function callback) async {
+  Future<List<dynamic>> _request(String url) async {
     Response response = await _dio.get(url);
     debugPrint(response.data.toString());
     if (response.statusCode != 0) {
-      BiResponse biResponse = BiResponse.map(jsonDecode(response.data.toString()));
-
+      BiResponse biResponse =
+          BiResponse.map(jsonDecode(response.data.toString()));
       print("1");
-      callback(biResponse.data);
+      return biResponse.data;
     }
+    return null;
   }
 }
