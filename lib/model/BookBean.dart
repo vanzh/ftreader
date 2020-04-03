@@ -1,7 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
-/// Id : 510915
 
-part 'Book.g.dart';
+
+part 'BookBean.g.dart';
+/// Id : 510915
 /// Name : "我的帝国无双"
 /// Author : "录事参军"
 /// Img : "wodediguowushuang.jpg"
@@ -9,11 +10,12 @@ part 'Book.g.dart';
 /// CName : "历史军事"
 /// Score : "6.0"
 
-@JsonSerializable()
-class Book {
 
-	factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
-	Map<String, dynamic> toJson( instance) => _$BookToJson(this);
+@JsonSerializable()
+class BookBean {
+
+	factory BookBean.fromJson(Map<String, dynamic> json) => _$BookBeanFromJson(json);
+	Map<String, dynamic> toJson( instance) => _$BookBeanToJson(this);
   int Id;
   String Name;
   String Author;
@@ -22,10 +24,10 @@ class Book {
   String CName;
   String Score;
 
-  Book(this.Id, this.Name, this.Author, this.Img, this.Desc, this.CName,
+  BookBean(this.Id, this.Name, this.Author, this.Img, this.Desc, this.CName,
       this.Score);
 
-  Book.map(dynamic obj) {
+  BookBean.map(dynamic obj) {
     this.Id = obj["Id"];
     this.Name = obj["Name"];
     this.Author = obj["Author"];

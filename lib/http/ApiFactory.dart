@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ftreader/http/BiResponse.dart';
-import 'package:ftreader/model/CityCategory.dart';
+import 'package:ftreader/model/CityCategoryBean.dart';
 
 var api = new ApiFactory();
 
@@ -21,12 +21,12 @@ class ApiFactory {
 
   Dio _dio;
 
-  Future<List<CityCategory>> bookCityList() async {
+  Future<List<CityCategoryBean>> bookCityList() async {
     var list =
         await _request("https://appbdsc.cdn.bcebos.com/v6/base/man.html");
     return list
         ?.map((e) =>
-            e == null ? null : CityCategory.fromJson(e as Map<String, dynamic>))
+            e == null ? null : CityCategoryBean.fromJson(e as Map<String, dynamic>))
         ?.toList();
   }
 
