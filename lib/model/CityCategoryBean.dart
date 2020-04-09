@@ -9,6 +9,21 @@ part 'CityCategoryBean.g.dart';
 /// Category : "火热新书"
 /// Books : [{"Id":510915,"Name":"我的帝国无双","Author":"录事参军","Img":"wodediguowushuang.jpg","Desc":"五代十国，唐末宋初，笑谈琵琶，醉卧沙场。\r\n\r\n 天大地大，谁伴我仗剑天涯，谱一曲帝国无双！\r\n\r\n 参军出品，必属精品！","CName":"历史军事","Score":"6.0"}]
 
+enum CityCategory{
+  ///热门连载
+  Hot,
+  ///火热新书
+  New,
+  ///完本精选
+  BookComplete,
+  ///重推书单
+  RecommendBookSet,
+  ///分类导航
+  SubCategory
+
+}
+
+
 @JsonSerializable()
 class CityCategoryBean {
 

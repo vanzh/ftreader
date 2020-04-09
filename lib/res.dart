@@ -8,7 +8,11 @@ class Res {
 
 
 
+
+  static Color colorDivide = Colors.grey[200];
   static Color colorBlue = Colors.blue;
+  static Color colorBlueFont = Colors.blue[300];
+  static Color colorWhite = Colors.white;
   static Color colorBaseTitle = Colors.black87;
   static Color colorSubTitle = Colors.black38;
   static Color colorContent = Colors.grey;

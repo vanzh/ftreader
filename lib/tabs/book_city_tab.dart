@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:ftreader/http/ApiFactory.dart';
 import 'package:ftreader/model/CityCategoryBean.dart';
+import 'package:ftreader/widget/BookCategorySet.dart';
+import 'package:ftreader/widget/BookSetWidget.dart';
 import 'package:ftreader/widget/CityCardMore.dart';
 
 class BookCityTab extends StatefulWidget {
@@ -35,15 +37,24 @@ class _BookCityState extends State<BookCityTab>
     }
     return SingleChildScrollView(
       child: Column(children: <Widget>[
-        CityCardMore(datas[0]),
-        CityCardMore(datas[1]),
-        CityCardMore(datas[2]),
-        CityCardMore(datas[3]),
-        CityCardMore(datas[4]),
-        CityCardMore(datas[5])
+        CityCardMore(findCategoryBean("重磅推荐")),
+        CityCardMore(findCategoryBean("火热新书")),
+        BookCategorySet(findCategoryBean("分类导航")),
+        CityCardMore(findCategoryBean("热门连载")),
+        BookSetWidget(findCategoryBean("重推书单")),
+        CityCardMore(findCategoryBean("完本精选")),
       ]),
     );
   }
+
+  CityCategoryBean findCategoryBean(String categoryStr) {
+    CityCategoryBean firstWhere = datas?.firstWhere(
+        (cate) => cate.Category == categoryStr,
+        orElse: () => null);
+    return firstWhere;
+  }
+
+
 
   @override
   bool get wantKeepAlive => true;
