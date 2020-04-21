@@ -29,35 +29,35 @@ class BookCategorySet extends StatelessWidget {
     if (categories == null || categories.length == 0) {
       return Text("");
     }
+    List<Widget> items= List();
+    for (int i = 0; i < categories.length; i++) {
+      items.add(oneItemWidget(i, categories[i]));
+    }
     //return Text("===");
-    return Row(
-      children: <Widget>[
-        Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Res.colorBlue),
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: Text(categories[0].CategoryName,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Res.colorWhite,
-                ))),
-      ],
+    return Container(
+      margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween, children: items),
     );
-//    return ListView.builder(
-//        itemCount: categories.length,
-//        itemBuilder: (BuildContext context, int index) {
-//          return Container(
-//            decoration: BoxDecoration(
-//                border: Border.all(color: Res.colorBlue),
-//                borderRadius: BorderRadius.all(Radius.circular(20))),
-//            child: Text(
-//              categories[index].CategoryName,
-//              style: TextStyle(
-//                fontSize: 12,
-//                color: Res.colorWhite,
-//              ),
-//            ),
-//          );
-//        });
+  }
+
+  Widget oneItemWidget(int index, BookCategoryBean bookCategoryBean) {
+    return GestureDetector(
+      onTap: () => onClick(bookCategoryBean),
+      child: Container(
+          padding: EdgeInsets.only(left: 10, right: 10, top: 4, bottom: 4),
+          decoration: BoxDecoration(
+              color: colors[index],
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: Text(bookCategoryBean.CategoryName,
+              style: TextStyle(
+                fontSize: 12,
+                color: Res.colorWhite,
+              ))),
+    );
+  }
+
+  void onClick(BookCategoryBean bookCategoryBean) {
+    print("onClick:" + bookCategoryBean.CategoryName);
   }
 }

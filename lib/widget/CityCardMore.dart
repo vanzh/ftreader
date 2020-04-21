@@ -7,6 +7,7 @@ import 'package:ftreader/model/BookBean.dart';
 import 'package:ftreader/model/BookListBean.dart';
 import 'package:ftreader/model/CityCategoryBean.dart';
 import 'package:ftreader/res.dart';
+import 'package:ftreader/widget/PageBookWidget.dart';
 
 /// 更多
 class CityCardMore extends StatelessWidget {
@@ -84,6 +85,9 @@ class CityCardMore extends StatelessWidget {
       case "完本精选":
         ret = getBookLayout6(cityCategoryBean.Books);
         break;
+      case "重磅推荐":
+        ret = PageBookWidget(cityCategoryBean.Books);
+        break;
       default:
         ret = Text("无内容");
         break;
@@ -130,29 +134,19 @@ class CityCardMore extends StatelessWidget {
       children: <Widget>[
         getOneDetailBookLayout(books[0]),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             getOneSimpleBookLayout(books[1]),
-            Expanded(
-              flex: 1,
-              child: getOneSimpleBookLayout(books[2]),
-            ),
+            getOneSimpleBookLayout(books[2]),
             getOneSimpleBookLayout(books[3]),
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Expanded(
-              flex: 0,
-              child: getOneSimpleBookLayout(books[4]),
-            ),
-            Expanded(
-              flex: 1,
-              child: getOneSimpleBookLayout(books[5]),
-            ),
-            Expanded(
-              flex: 0,
-              child: getOneSimpleBookLayout(books[6]),
-            )
+            getOneSimpleBookLayout(books[4]),
+            getOneSimpleBookLayout(books[5]),
+            getOneSimpleBookLayout(books[6])
           ],
         ),
       ],
@@ -166,21 +160,12 @@ class CityCardMore extends StatelessWidget {
     return Column(
       children: <Widget>[
         Row(
-          children: <Widget>[
-            Expanded(
-              flex: 0,
-              child: getOneSimpleBookLayout(books[0]),
-            ),
-            Expanded(
-              flex: 1,
-              child: getOneSimpleBookLayout(books[1]),
-            ),
-            Expanded(
-              flex: 0,
-              child: getOneSimpleBookLayout(books[2]),
-            )
-          ],
-        ),
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              getOneSimpleBookLayout(books[0]),
+              getOneSimpleBookLayout(books[1]),
+              getOneSimpleBookLayout(books[2]),
+            ]),
         Row(
           children: <Widget>[
             Expanded(
@@ -210,19 +195,11 @@ class CityCardMore extends StatelessWidget {
         getOneDetailBookLayout(books[0]),
         getOneDetailBookLayout(books[1]),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Expanded(
-              flex: 0,
-              child: getOneSimpleBookLayout(books[2]),
-            ),
-            Expanded(
-              flex: 1,
-              child: getOneSimpleBookLayout(books[3]),
-            ),
-            Expanded(
-              flex: 0,
-              child: getOneSimpleBookLayout(books[4]),
-            )
+            getOneSimpleBookLayout(books[2]),
+            getOneSimpleBookLayout(books[3]),
+            getOneSimpleBookLayout(books[4])
           ],
         ),
       ],

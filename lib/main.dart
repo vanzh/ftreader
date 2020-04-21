@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SafeArea(
           child: PageView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        physics: PageScrollPhysics(),
         controller: _pageController,
         itemCount: _pageWidgets.length,
         itemBuilder: (context, index) => _pageWidgets[index],
